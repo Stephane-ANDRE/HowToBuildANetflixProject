@@ -1,75 +1,80 @@
-// import datas from useCurrentUser
+// Importing data from useCurrentUser
 import useCurrentUser from "@/hooks/useCurrentUser";
 
 import { NextPageContext } from "next";
 
-// import session from next-auth
+// Importing session from next-auth
 import { getSession } from "next-auth/react";
-import { useRouter } from "next/router";
 
-//getting datas from the server
+// Retrieving data from the server
 export async function getServerSideProps(context: NextPageContext) {
     const session = await getSession(context);
 
-    if(!session) {
+    // Redirecting to the authentication page if the user is not logged in
+    if (!session) {
         return {
             redirect: {
                 destination: "/auth",
                 permanent: false,
             }
-        }
+        };
     }
-    //don't forget to return the props empty
+
+    // It's important to return an empty props object
     return {
         props: {}
-      }
+    };
 }
 
-
 const Profiles = () => {
-    const router = useRouter()
-    const { data: user} = useCurrentUser()
+    // Using the useCurrentUser hook to fetch user data
+    const { data: user } = useCurrentUser();
+
     return (
         <div className="flex items-center h-full justify-center">
             <div className="flex flex-col">
-                <h1 className="text-3xl md:text-6xl text-white text-center"> Whos is watching Notflix?</h1>
+                <h1 className="text-3xl md:text-6xl text-white text-center">Who's watching Notflix?</h1>
                 <div className="flex items-center justify-center gap-8 mt-10">
-                    <div onClick={() => router.push("/")}>
+                    {/* Profile component */}
+                    <div onClick={() => {}}>
                         <div className="group flex-row w-44 mx-auto">
+                            {/* Profile image */}
                             <div 
-                            className="
-                            w-44
-                            h-44
-                            rounded-md
-                            flex
-                            items-center
-                            justify-center
-                            border-2
-                            border-transparent
-                            group-hover:cursor-pointer
-                            group-hover:border-white
-                            overflow-hidden
-                            "
+                                className="
+                                    w-44
+                                    h-44
+                                    rounded-md
+                                    flex
+                                    items-center
+                                    justify-center
+                                    border-2
+                                    border-transparent
+                                    group-hover:cursor-pointer
+                                    group-hover:border-white
+                                    overflow-hidden
+                                "
                             >
                                 <img src="/images/default-red.png" alt="Profile" />
                             </div>
+                            {/* Profile name */}
                             <div
-                            className="
-                            mt-4
-                            text-gray-400
-                            text-2xl
-                            text-center
-                            group-hover:text-white
-                            "
+                                className="
+                                    mt-4
+                                    text-gray-400
+                                    text-2xl
+                                    text-center
+                                    group-hover:text-white
+                                "
                             >
-                            {user?.name}
+                                {/* Displaying user's name */}
+                                {user ? user.name : "Name"}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 };
 
 export default Profiles;

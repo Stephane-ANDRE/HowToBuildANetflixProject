@@ -1,9 +1,11 @@
-// Importing useCurrentUser hook for managing current user data
-import useCurrentUser from "@/hooks/useCurrentUser";
+//import Navbar component
+import NavBar from "@/components/navbar";
+
 // Importing Next.js NextPageContext type
 import { NextPageContext } from "next"; 
+
 // Importing getSession and signOut functions from next-auth/react
-import { getSession, signOut } from "next-auth/react"; 
+import { getSession } from "next-auth/react"; 
 
 // This function is used to fetch server-side data before rendering the page
 export async function getServerSideProps(context: NextPageContext) {
@@ -30,19 +32,12 @@ export async function getServerSideProps(context: NextPageContext) {
 
 // Default Home component representing the home page of the application
 export default function Home() {
-  // Using useCurrentUser hook to fetch current user data
-  const { data: user } = useCurrentUser();
+ 
 
   return (
     <>
-      {/* Title of the page */}
-      <h1 className="text-2xl text-green-500">Notflix</h1>
+      <NavBar />
       
-      {/* Displaying current user's name */}
-      <p className="text-white">Logged in as: {user?.name}</p>
-      
-      {/* Button for logging out, onClick event calls signOut function */}
-      <button className="h-10 w-full bg-white" onClick={() => signOut()}> Logout!</button>
     </>
   );
 }
