@@ -1,5 +1,6 @@
 //import Navbar component
-import NavBar from "@/components/navbar";
+import Billboard from "@/components/Billboard";
+import NavBar from "@/components/Navbar";
 
 // Importing Next.js NextPageContext type
 import { NextPageContext } from "next"; 
@@ -37,7 +38,7 @@ export default function Home() {
   return (
     <>
       <NavBar />
-      
+      <Billboard />
     </>
   );
 }

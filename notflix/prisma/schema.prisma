@@ -84,12 +84,13 @@ model VerificationToken {
 }
 
 model Movie {
-        id String @id @default(auto()) @map("_id") @db.ObjectId
-        title String
-        description String
-        videoURL String
-        thumbnailURL String
-        genre String
-        duration String
-
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  description String
+  videoURL String
+  thumbnailURL String
+  genre String
+  duration String
+  
 }
+
