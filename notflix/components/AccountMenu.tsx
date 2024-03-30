@@ -8,7 +8,7 @@ interface AccountMenuProps {
 }
 
 const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
-    const { data: currentUser } = useCurrentUser();
+    const { data } = useCurrentUser();
     // Render nothing if visible prop is false
     if (!visible) {
         return null;
@@ -21,7 +21,7 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
                 {/*group/item is just a way that we can target multiple groups inside another group */}
                 <div className="px-3 group/item flex flex-row gap-3 items-center w-full">
                     <img className="w-8 rounded-md" src="/images/default-red.png" alt="profile" />
-                    <p className="text-white text-sm group-hover/item:underline">{currentUser?.name}</p>                </div>
+                    <p className="text-white text-sm group-hover/item:underline">{data?.name}</p>                </div>
                 <hr className="bg-gray-600 border-0 h-px my-4"/>
                 <div onClick={() => signOut()} className="px-3 text-center text-white text-sm hover:underline">
                     Sign out of Notflix

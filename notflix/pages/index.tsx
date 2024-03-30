@@ -7,6 +7,8 @@ import { NextPageContext } from "next";
 import { getSession } from "next-auth/react"; 
 import useMovieList from "@/hooks/useMovieList";
 import useFavorites from "@/hooks/useFavorites";
+import InfoModal from "@/components/InfoModal";
+import useInfoModal from "@/hooks/useInfoModal";
 
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
@@ -33,8 +35,11 @@ export default function Home() {
   // showing only my favorites
   const { data: favorites = [] } = useFavorites();
 
+  const {isOpen, closeModal } = useInfoModal()
+
   return (
     <>
+    <InfoModal visible ={isOpen} onClose={closeModal}/>
       <NavBar />
       <Billboard />
       <div className="pb-40">
