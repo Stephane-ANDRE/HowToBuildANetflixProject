@@ -64,7 +64,7 @@ const NavBar = () => {
             ${showBackground ? "bg-zinc-900 bg-opacity-90":""}
             `}
             >
-            <img className="h-4 lg:h-7" src="./images/logo.png" alt="" />
+            <img className="h-4 lg:h-7" src="./images/logo.png" alt="logo" />
             <div className="
             flex-row
             ml-8
@@ -89,6 +89,7 @@ const NavBar = () => {
                 {/*Mobile menu component */}
                 <MobileMenu visible={showMobileMenu}/>               
             </div>
+
             <div className=" flex flex-row ml-auto gap-7 items-center">
                 <div className="text-white hover:text-gray-400 cursor-pointer transition">
                     <BsSearch className="size-6" />
@@ -100,7 +101,7 @@ const NavBar = () => {
                 {/*Account menu component */}
                 <div onClick={toggleAccountMenu}  className="flex flex-row items-center gap-2 cursor-pointer relative">
                      <div className="w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden">
-                        <img src="/images/default-red.png" alt="" />
+                        <img src="/images/default-red.png" alt="profile" />
                     </div>
                     <BsChevronCompactDown className= {`text-white transition ${showAccountMenu ? "rotate-180": "rotate-0"} `} />
                     <AccountMenu visible ={showAccountMenu}/>

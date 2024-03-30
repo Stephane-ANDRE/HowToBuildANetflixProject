@@ -1,7 +1,9 @@
 import React from "react";
+import { useRouter } from "next/router";
 
 //import play icon
 import { BsFillPlayFill } from "react-icons/bs";
+import FavoriteButton from "./FavoriteButton";
 
 // Define props expected by the MovieCard component
 interface MovieCardProps {
@@ -11,6 +13,8 @@ interface MovieCardProps {
 
 // MovieCard functional component
 const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
+    const router = useRouter();
+
     return (
         <div className="group bg-zinc-900 col-span relative h-[12vw]">
 
@@ -60,8 +64,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
                         cursor-pointer
                         object-cover
                         transition
-                        duration-200
-                        delay-300
+                        duration
                         shadow-xl
                         rounded-t-md
                         w-full
@@ -103,10 +106,11 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
                                 transition
                                 hover:bg-neutral-400
                             "
-                            onClick={() => {}}
+                            onClick={() => router.push(`/watch/${data?.id}`)}
                         >
                             <BsFillPlayFill size={30} />
                         </div>
+                        <FavoriteButton movieId={data?.id} />
                     </div>
 
                     {/* Movie year */}

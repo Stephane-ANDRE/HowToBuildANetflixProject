@@ -2,17 +2,17 @@ import { NextApiRequest, NextApiResponse } from "next";
 // Importing Prisma database instance
 import prismadb from "@/lib/prismadb"; 
 // Importing authentication service
-import servAuth from "@/lib/servAuth"; 
+import serverAuth from "@/lib/serverAuth";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 // Checking if the request method is not GET
-    if (req.method != "GET") { 
+    if (req.method !== "GET") { 
         return res.status(405).send("Wrong Method"); 
         
     }
     try {
         // Authenticating the request
-        await servAuth(req);
+        await serverAuth(req);
         // Counting the total number of movies in the database 
         const movieCount = await prismadb.movie.count(); 
         // Generating a random index within the range of movie count

@@ -7,9 +7,10 @@ import prismadb from "@/lib/prismadb";
 // Handling POST request for user registration
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     // Checking if the request method is not POST
-    if (req.method != "POST") {
+    if (req.method !== "POST") {
         return res.status(405).send("Wrong Method"); 
     }
+    
     try {
         // Extracting email, name, and password from the request body
         const { email, name, password } = req.body;

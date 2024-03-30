@@ -1,5 +1,11 @@
 // CONFIGURATION OF AUTHENTICATION WITH NEXTAUTH FOR NEXT.JS APP //
 
+/*IMPORTANT DETAILS:
+[...] => explains to Next.js that it's a dynamic route capable of accepting various URL segments
+based on the URL structure. This approach is often used to create pages 
+requiring flexible management of URL parameters, such as article detail pages, user profile pages, etc.
+*/
+
 // Import Modules
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";

@@ -5,6 +5,7 @@ import { NextPageContext } from "next";
 
 // Importing session from next-auth
 import { getSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 // Retrieving data from the server
 export async function getServerSideProps(context: NextPageContext) {
@@ -29,14 +30,15 @@ export async function getServerSideProps(context: NextPageContext) {
 const Profiles = () => {
     // Using the useCurrentUser hook to fetch user data
     const { data: user } = useCurrentUser();
+    const router = useRouter()
 
     return (
         <div className="flex items-center h-full justify-center">
             <div className="flex flex-col">
-                <h1 className="text-3xl md:text-6xl text-white text-center">Who's watching Notflix?</h1>
+                <h1 className="text-3xl md:text-6xl text-white text-center"> Who's watching Notflix?</h1>
                 <div className="flex items-center justify-center gap-8 mt-10">
                     {/* Profile component */}
-                    <div onClick={() => {}}>
+                    <div onClick={() => router.push("/")}>
                         <div className="group flex-row w-44 mx-auto">
                             {/* Profile image */}
                             <div 
@@ -67,7 +69,7 @@ const Profiles = () => {
                                 "
                             >
                                 {/* Displaying user's name */}
-                                {user ? user.name : "Name"}
+                                {user ?.name}
                             </div>
                         </div>
                     </div>

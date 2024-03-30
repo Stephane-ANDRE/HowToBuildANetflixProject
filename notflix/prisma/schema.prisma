@@ -15,33 +15,19 @@ datasource db {
 
 
 model User {
-  //@id = it's a primary key
-  //@default(auto()) = it must be generated automatically 
-  //@db.ObjectId = give you the data type of the object. In this case ObjectId which is specificly use for MongoDB
+  
   id String @id @default(auto()) @map("_id") @db.ObjectId
   name String
-
-  // (?) = optional
   image String?
-
-  // (?) = optional and we have the possibility to log in with google account for example
-  // but it has to stay unique
   email String? @unique
-
   emailVerified DateTime?
-
-    // (?) = optional and we have the possibility to log in with google account for example
   hashedPassword String?
-
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  //it will be a list of our liked movies (their ids) stoke in the array []
   favoriteIds String[] @db.ObjectId
-
   sessions Session[]
   accounts Account[]
 }
-//model that we are going to use in our Google or GitHub account
 model Account {
     id String @id @default(auto()) @map("_id") @db.ObjectId
     userId String @db.ObjectId
@@ -55,10 +41,6 @@ model Account {
     scope String?
     id_token String? @db.String
     session_state String?
-
-//We are connecting our user model with our account model 
-//using the field called user ID which is goint to reference to user ID
-//when the user is deleted we want the account connected to it delete as well
     user User @relation(fields:[userId], references: [id], onDelete: Cascade)
 
     @@unique([provider, providerAccountId])
@@ -77,7 +59,7 @@ model VerificationToken {
       id String @id @default(auto()) @map("_id") @db.ObjectId
       identifier String
       token String @unique
-      expire DateTime
+      expires DateTime
 
     @@unique([identifier, token])
 

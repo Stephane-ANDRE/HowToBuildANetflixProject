@@ -1,6 +1,6 @@
 //Imports
 
-import Input from "@/components/input";
+import Input from "@/components/Input";
 //React hook allows a functional component to keep a state in the locals: it will manage it locally
 import { useCallback, useState } from "react";
 import axios from "axios";
