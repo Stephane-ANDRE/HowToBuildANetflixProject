@@ -42,10 +42,10 @@ Mais ce n'est pas le genre de la maison 😎!
 - etc.
 
 ## Pour ce How_to_Build je remercie:
-Code With Antonio
-https://www.youtube.com/watch?v=mqUN4N2q4qY
-(CC) Blender Foundation | mango.blender.org
-(c) copyright 2006, Blender Foundation / Netherlands Media Art Institute / www.elephantsdream.org
-(c) copyright 2008, Blender Foundation / www.bigbuckbunny.org
-© copyright Blender Foundation | durian.blender.org
-© copyright Blender Foundation | www.sintel.org
+- Code With Antonio
+- https://www.youtube.com/watch?v=mqUN4N2q4qY
+- (CC) Blender Foundation | mango.blender.org
+- (c) copyright 2006, Blender Foundation / Netherlands Media Art Institute / www.elephantsdream.org
+- (c) copyright 2008, Blender Foundation / www.bigbuckbunny.org
+- © copyright Blender Foundation | durian.blender.org
+ -© copyright Blender Foundation | www.sintel.org
