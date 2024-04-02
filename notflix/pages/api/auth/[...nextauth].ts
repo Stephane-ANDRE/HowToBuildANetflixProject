@@ -1,13 +1,20 @@
 // CONFIGURATION OF AUTHENTICATION WITH NEXTAUTH FOR NEXT.JS APP //
 
 /*IMPORTANT DETAILS:
+First:
 [...] => explains to Next.js that it's a dynamic route capable of accepting various URL segments
 based on the URL structure. This approach is often used to create pages 
 requiring flexible management of URL parameters, such as article detail pages, user profile pages, etc.
+Second: I followed the tuto and I was blocked at "Favorites and My list Functionnality". 
+I didn't understand why the code doesn't work  and i can see working into the video.
+I found my answer on discord.. because I am using a newest version of Next and NextAuth, I have to adapt the code
+and I followed the explanation.
+I saw those modification on Antonio repo's but I didn't understand why he made those.
+So next step for me: if I see modifications in the code.. read the doc to understand why was it necessary
 */
 
 // Import Modules
-import NextAuth from "next-auth";
+import NextAuth, { AuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
 // Import function "compare" from bcrypt
@@ -23,8 +30,10 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 // with the client instance stocked in the global.prismadb
 import prismadb from "@/lib/prismadb";
 
+export const authOptions: AuthOptions = {
+
+
 // Export the nextAuth instance with different providers configuration inside the object:
-export default NextAuth({
     providers: [
         GithubProvider({
             clientId: process.env.GITHUB_ID || "",
@@ -87,4 +96,5 @@ export default NextAuth({
         secret: process.env.NEXTAUTH_JWT_SECRET,
     },
     secret: process.env.NEXTAUTH_SECRET
-});
+};
+export default NextAuth(authOptions);

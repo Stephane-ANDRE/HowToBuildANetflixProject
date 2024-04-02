@@ -5,50 +5,56 @@ import { AiOutlinePlus, AiOutlineCheck } from "react-icons/ai";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import useFavorites from "@/hooks/useFavorites";
 
+// Define the props interface for the FavoriteButton component
 interface FavoriteButtonProps {
-    movieId: string
-  }
-  
-  const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieId }) => {
-    const { mutate: mutateFavorites } = useFavorites();
-  
-    const { data: currentUser, mutate } = useCurrentUser();
-  
-    const isFavorite = useMemo(() => {
-      const list = currentUser?.favoriteIds || [];
-  
-      return list.includes(movieId);
-    }, [currentUser, movieId]);
-  
-    const toggleFavorites = useCallback(async () => {
-          let response;
-      
-          if (isFavorite) {
-            response = await axios.delete('/api/favorite', { data: { movieId } });
-          } else {
-            response = await axios.post('/api/favorite', { movieId });
-          }
-      
-          // Vérifiez si response est défini avant d'y accéder
-          const updatedFavoriteIds = response?.data?.favoriteIds;
-      
-          // Mettez à jour l'état seulement si response est défini et contient des données valides
-            mutate({ 
-              ...currentUser, 
-              favoriteIds: updatedFavoriteIds,
-            });
-          
-      
-          // Mettez à jour les favoris après la modification
-          mutateFavorites();
-        }, [movieId, isFavorite, currentUser, mutate, mutateFavorites]);
+  movieId: string;
+}
 
-    const Icon = isFavorite ? AiOutlineCheck : AiOutlinePlus;
+// FavoriteButton component
+const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieId }) => {
+  // Custom hook to mutate favorites
+  const { mutate: mutateFavorites } = useFavorites();
+  // Custom hook to fetch current user data
+  const { data: currentUser, mutate } = useCurrentUser();
 
-    return(
-        <div
-        onClick={toggleFavorites}
-         className="
+  // Check if the current movie is a favorite
+  const isFavorite = useMemo(() => {
+    const list = currentUser?.favoriteIds || [];
+    return list.includes(movieId);
+  }, [currentUser, movieId]);
+
+  // Toggle favorite status
+  const toggleFavorites = useCallback(async () => {
+    let response;
+
+    // Check if the movie is already a favorite
+    if (isFavorite) {
+      response = await axios.delete('/api/favorite', { data: { movieId } });
+    } else {
+      response = await axios.post('/api/favorite', { movieId });
+    }
+
+    // Update favoriteIds based on the response data
+    const updatedFavoriteIds = response?.data?.favoriteIds;
+
+    // Update the current user's favoriteIds
+    mutate({ 
+      ...currentUser, 
+      favoriteIds: updatedFavoriteIds,
+    });
+
+    // Update the favorites list
+    mutateFavorites();
+  }, [movieId, isFavorite, currentUser, mutate, mutateFavorites]);
+
+  // Determine the icon to display based on the favorite status
+  const Icon = isFavorite ? AiOutlineCheck : AiOutlinePlus;
+
+  // Render the FavoriteButton component
+  return(
+    <div
+      onClick={toggleFavorites}
+      className="
         cursor-pointer
         group/item
         w-6
@@ -63,10 +69,12 @@ interface FavoriteButtonProps {
         items-center
         transition
         hover:border-netural-300
-        ">
-            <Icon className="text-white" size={25} />
-        </div>
-    )
-}
+      "
+    >
+      <Icon className="text-white" size={25} />
+    </div>
+  );
+};
 
+// Export the FavoriteButton component
 export default FavoriteButton;

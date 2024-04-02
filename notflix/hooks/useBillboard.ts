@@ -1,3 +1,8 @@
+/* SWR is kind of AJAX but only for React with great advantages:
+- better management for cache
+- better performance
+- manage the states of method
+- better UX because fetching datas faster */
 
 import useSwr from 'swr';
 // Importing the fetcher function from the fetcher module

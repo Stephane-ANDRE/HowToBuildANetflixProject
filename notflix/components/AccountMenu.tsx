@@ -1,6 +1,7 @@
  import { signOut } from "next-auth/react";
 import React from "react";
 
+// need to be logged
 import useCurrentUser from "@/hooks/useCurrentUser";
 
 interface AccountMenuProps {

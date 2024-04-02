@@ -1,19 +1,21 @@
 import React, { useCallback } from "react";
 import useBillboard from "@/hooks/useBillboard";
-
-
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import PlayButton from "./PlayButton";
 import useInfoModal from "@/hooks/useInfoModal";
 
+//billboard component: which is a video billboard and composed with a title, description a play button
 const Billboard = () => {
+    // Fetch data for the billboard video
     const {data} = useBillboard();
+    // Custom hook to handle opening info modals
     const {openModal} = useInfoModal();
 
     const handleOpenModal = useCallback(()=> {
         openModal(data?.id);
     }, [openModal, data?.id])
 
+    // Render the billboard component
     return (
         <div className="relative h-[56.25vw]">
             <video

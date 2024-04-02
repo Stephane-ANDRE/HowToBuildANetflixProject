@@ -10,7 +10,7 @@ if (req.method !== "GET") {
    return res.status(405).send("Wrong Method");
 }
 try {
-    await serverAuth(req);
+    await serverAuth(req, res);
 
     const movies = await prismadb.movie.findMany()
 

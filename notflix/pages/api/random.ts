@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
     try {
         // Authenticating the request
-        await serverAuth(req);
+        await serverAuth(req, res);
         // Counting the total number of movies in the database 
         const movieCount = await prismadb.movie.count(); 
         // Generating a random index within the range of movie count
