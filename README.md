@@ -1,4 +1,5 @@
 # HowToBuildANetflixProject
+![AirChezBibi](/notflix/public/images/logo.png "AirChezBibi")
 Let's make a Notflix very close to Neflix but it's Notflix and not Netflix...
 Welcome to the second HowToBuild edition
 
