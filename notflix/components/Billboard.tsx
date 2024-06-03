@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import useBillboard from "@/hooks/useBillboard";
 import { AiOutlineInfoCircle } from "react-icons/ai";
-import PlayButton from "./PlayButton";
+import PlayButton from "@/components/PlayButton";
 import useInfoModal from "@/hooks/useInfoModal";
 
 //billboard component: which is a video billboard and composed with a title, description a play button

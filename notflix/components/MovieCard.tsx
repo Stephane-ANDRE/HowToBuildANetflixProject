@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 //import play icon
 import { BsFillPlayFill } from "react-icons/bs";
-import FavoriteButton from "./FavoriteButton";
+import FavoriteButton from "@/components/FavoriteButton";
 import useInfoModal from "@/hooks/useInfoModal";
 import { BiChevronDown } from "react-icons/bi";
 

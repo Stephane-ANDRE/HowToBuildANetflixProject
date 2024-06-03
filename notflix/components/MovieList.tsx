@@ -5,7 +5,7 @@ import React from "react";
 import { isEmpty } from "lodash";
 
 //importing MovieCard component
-import MovieCard from "./MovieCard";
+import MovieCard from "@/components/MovieCard";
 
 // Define the props expected by the MovieList component
 interface MovieListProps {

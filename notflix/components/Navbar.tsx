@@ -2,13 +2,13 @@
 import { useCallback, useEffect, useState } from "react";
 
 //import MobileMenu component
-import MobileMenu from "./MobileMenu";
+import MobileMenu from "@/components/MobileMenu";
 // import NavBarItem component
-import NavBarItem from "./NavBarItem";
+import NavBarItem from "@/components/NavBarItem";
 
 //import React icone
 import { BsChevronCompactDown,BsSearch, BsBell} from "react-icons/bs";
-import AccountMenu from "./AccountMenu";
+import AccountMenu from "@/components/AccountMenu";
 
 // Constant for the top offset
 const TOP_OFFSET = 66;
